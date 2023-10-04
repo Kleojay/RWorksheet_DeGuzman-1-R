@@ -1,0 +1,80 @@
+#---
+#date: "2023-10-04"
+#---
+
+#```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = TRUE)
+#```
+
+## R Markdown
+
+#This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+#When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+#```
+
+## Including Plots
+
+#You can also embed plots, for example:
+
+#```{r pressure, echo=FALSE}
+#plot(pressure)
+#```
+
+#Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+UpperLetters<- LETTERS [1:26]
+UpperLetters
+
+LowerLetters<- letters [1:26]
+LowerLetters
+
+#a.
+First_11 <- LETTERS [1:11]
+First_11
+#b.
+OddLetters <- UpperLetters [c(TRUE, FALSE)]
+OddLetters
+#c.
+VowelLetters <- LETTERS [c(1,5,9,15,21)]
+VowelLetters
+#d.
+LastLetters <- letters [c(22,23,24,25,26)]
+LastLetters
+#e.
+BetLetters <- letters [15:24]
+BetLetters
+
+#2. 
+#a.
+city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+#b.
+temp <- c(42,39,34,34,30,27)
+temp
+#c.
+data <- data.frame(city, temp)
+data
+#d.
+names(data) <- c("City", "Temperature")
+data
+#e.
+str(df)
+#The output function (x, df1, df2, ncp, 
+#    log = FALSE)
+
+#f.
+data [c(3, 4),]
+
+#g.
+max_temp_city <- data$city[which.max(data$temp)]
+max_temp_city
+
+min_temp_city <- data$city[which.min(data$temp)]
+min_temp_city
+
+
+
+
+
