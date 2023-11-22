@@ -1,0 +1,189 @@
+---
+title: "Rworksheet_DeGuzman#4a"
+author: "Arjay"
+date: "2023-10-25"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#1.
+HouseholdData <-data.frame(
+Shoesize = c(6.5,9.0,8.5,8.5,10.5,7.0,9.5,9.0,13.0,7.5,10.5,8.5,12.0,10.5,13.0,11.5,8.5,5.0,10.0,6.5,7.5,8.5,10.5,8.5,10.5,11.0,9.0,13.0),
+Height = c(66.0,68.0,64.5,65.0,70.0,64.0,70.0,71.0,72.0,64.0,74.5,67.0,71.0,71.0,77.0,72.0,59.0,62.0,72.0,66.0,64.0,67.0,73.0,69.0,72.0,70.0,69.0,70.0),
+Gender = c("F","F","F","F","M","F","F","F","M","F","M","F","M","M","M","M","F","F","M","F","F","M","M","F","M","M","M","M")
+)
+HouseholdData
+
+#A. The data is a dataframe called "HouseholdData" with three variables: "Shoesize", "Height", and "Gender".
+```
+
+```{r}
+#B.
+
+Male <- subset(HouseholdData, Gender == "M")
+Male
+#Output
+#MaleData
+#   Shoesize Height Gender
+#14     10.5   71.0      M
+#15     13.0   77.0      M
+#16     11.5   72.0      M
+#19     10.0   72.0      M
+#22      8.5   67.0      M
+#23     10.5   73.0      M
+#25     10.5   72.0      M
+#26     11.0   70.0      M
+#27      9.0   69.0      M
+#28     13.0   70.0      M
+Female <- subset(HouseholdData, Gender == "F")
+Female
+#Output
+# Shoesize Height Gender
+#1       6.5   66.0      F
+#2       9.0   68.0      F
+#3       8.5   64.5      F
+#4       8.5   65.0      F
+#6       7.0   64.0      F
+#7       9.5   70.0      F
+#8       9.0   71.0      F
+#10      7.5   64.0      F
+#12      8.5   67.0      F
+#17      8.5   59.0      F
+#18      5.0   62.0      F
+#20      6.5   66.0      F
+#21      7.5   64.0      F
+#24      8.5   69.0      F
+```
+
+```{r}
+#C.
+mean_shoe <- mean(HouseholdData$Shoesize)
+cat("Mean shoe size:", mean_shoe)
+#Output: 
+#Mean shoe size: 9.410714
+
+mean_height <- mean(HouseholdData$Height)
+cat("Mean height:", mean_height)
+#Output:
+#Mean height: 68.57143
+```
+
+
+#D.
+#Most People who has a shoe size of 10 and above are tall people so it has some relationship between shoe size and height
+
+
+```{r}
+#2.
+Months <- c("March","April","January","November","January", "September","October","September","November","August", "January","November","November","February","May","August", "July","December","August","August","September","November","February", "April")
+
+Factor_Months_Vector <- factor(Months)
+Factor_Months_Vector
+```
+
+```{r}
+#3. 
+#Theyre both useful 
+summary(Months)
+summary(Factor_Months_Vector)
+```
+
+```{r}
+#4.
+DirVector <- rep(c("East", "West", "North"), times = c(1, 4, 3))
+new_order_data <- factor(DirVector, levels = c("East", "West", "North"))
+new_order_data
+```
+
+```{r}
+#5.
+#data <- read.table("/cloud/project/Rworksheet_DeGuzman_1-R./Rworksheets#4a", header=TRUE, sep=",")
+#read <- read.csv("import_march.csv")
+#read
+```
+
+```{r}
+#6
+#randomNum <- readline(prompt = "Enter number from 1 to 50: ")
+
+#if (randomNum > 50) {
+# paste("The number selected is beyond the range of 1 to 50")
+#} else if (randomNum == 20) {
+#  paste("TRUE")
+#} else {
+#  paste(randomNum)
+#}
+# Input number from user
+#input_number <- as.integer(readline("Enter a number between 1 and 50: "))
+
+# Check and display appropriate output
+#result <- check_number(input_number)
+#cat(result, "\n")
+```
+
+```{r}
+#7. 
+minimumBills <- function(price) {
+ 
+  min_bills <- price %/% 50
+  paste("The minimum no. of bills:", min_bills)
+}
+
+minimumBills(600)
+```
+
+```{r}
+# 8.a
+
+Grades <-data.frame(
+Name = c("Annie","Thea","Steve","Hanna"),
+Grade1 = c(85,65,75,95),
+Grade2 = c(65,75,55,75),
+Grade3 = c(85,90,80,100),
+Grade4 = c(100,90,85,90))
+
+Grades
+```
+
+```{r}
+# 8.b
+
+Grades$avg <- rowMeans(Grades[,2:5])
+
+subset_avg <- subset(Grades, avg > 90)
+
+mean(subset_avg$avg)
+```
+
+```{r}
+# 8.c
+
+first_Test <- sum(Grades$Grade1) / nrow(Grades)
+first_Test
+
+second_Test <- sum(Grades$Grade2) / nrow(Grades)
+second_Test
+
+third_Test <- sum(Grades$Grade3) / nrow(Grades)
+third_Test
+
+fourth_Test <- sum(Grades$Grade4) / nrow(Grades)
+fourth_Test
+
+if (first_Test < 80) {
+  paste("The 1st test was difficult.")
+} else if(second_Test < 80) {
+  paste("The 2nd test was difficult.")
+} else if(third_Test < 80) {
+  paste("The 3rd test was difficult.")
+} else if(fourth_Test < 80) {
+  paste("The 4th test was difficult.")
+} else {
+  paste("No test had an average score less than 80.")
+}
+```
+
